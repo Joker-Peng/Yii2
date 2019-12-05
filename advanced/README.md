@@ -26,16 +26,16 @@ DIRECTORY STRUCTURE
 
 ```
 common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
+    config/              contains shared configurations  共享配置
+    mail/                contains view files for e-mails 邮件
+    models/              contains model classes used in both backend and frontend 共同Model
+    tests/               contains tests for common classes    测试类文件
 console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
+    config/              contains console configurations 控制台配置
+    controllers/         contains console controllers (commands) 控制台控制器
+    migrations/          contains database migrations 数据库迁移文件
+    models/              contains console-specific model classes 控制台专用model
+    runtime/             contains files generated during runtime 控制台运行时生成的缓存文件
 backend
     assets/              contains application assets such as JavaScript and CSS
     config/              contains backend configurations
@@ -54,7 +54,7 @@ frontend
     tests/               contains tests for frontend application
     views/               contains view files for the Web application
     web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
+    widgets/             contains frontend widgets  后台的小组件
+vendor/                  contains dependent 3rd-party packages 依赖第三方扩展
+environments/            contains environment-based overrides  基于环境的覆盖文件
 ```
