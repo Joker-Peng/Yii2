@@ -4,7 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\BlogForm;
-use common\models\BlogSearch;
+use frontend\models\BlogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -72,8 +72,8 @@ class BlogController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // 单纯的调用save方法，该方法也会调用validate方法对表单数据进行校验和过滤，
             // 因为上面已经调用了validate方法，指定save(false)可避免重复调用validate
-            if ($model->save(false)) {
-                return $this->redirect(['index']);
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         }
 

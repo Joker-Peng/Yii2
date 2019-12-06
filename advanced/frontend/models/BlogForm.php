@@ -18,14 +18,6 @@ class BlogForm extends Blog
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
-        return 'blog';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [

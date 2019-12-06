@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\Member;
-use common\models\MemberSearch;
+use frontend\models\MemberForm;
+use frontend\models\MemberSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -64,7 +64,7 @@ class MemberController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Member();
+        $model = new MemberForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -118,7 +118,7 @@ class MemberController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Member::findOne($id)) !== null) {
+        if (($model = MemberForm::findOne($id)) !== null) {
             return $model;
         }
 
