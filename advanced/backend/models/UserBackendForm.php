@@ -127,4 +127,30 @@ class UserBackendForm extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
+
+    /**
+     * Desc: 根据user_backend表的username获取用户
+     * Created by: Joker
+     * Date: 2019/12/31
+     * Time: 16:01
+     * @param $username
+     * @return UserBackendForm|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
+    /**
+     * Desc: 验证密码的准确性
+     * Created by: Joker
+     * Date: 2019/12/31
+     * Time: 16:01
+     * @param $password
+     * @return bool
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
 }
