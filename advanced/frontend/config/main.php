@@ -36,28 +36,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'assetManager' => [
-            'bundles' => [
-                'dmstr\web\AdminLteAsset' => [
-                    'skin' => 'skin-blue',
-                    // 可选配置
-                    /*
-                    "skin-blue",
-                    "skin-black",
-                    "skin-red",
-                    "skin-yellow",
-                    "skin-purple",
-                    "skin-green",
-                    "skin-blue-light",
-                    "skin-black-light",
-                    "skin-red-light",
-                    "skin-yellow-light",
-                    "skin-purple-light",
-                    "skin-green-light"
-                    */
-                ],
-            ],
-        ],
     ],
     'params' => $params,
 ];
