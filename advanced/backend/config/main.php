@@ -16,8 +16,9 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
+        // 后台用户认证
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'backend\models\UserBackendForm',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -37,6 +38,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        // 后台 ui 框架
         'assetManager' => [
             'bundles' => [
                 'dmstr\web\AdminLteAsset' => [

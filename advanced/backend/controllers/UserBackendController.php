@@ -8,6 +8,7 @@ use backend\models\UserBackendSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\SignupForm;
 
 /**
  * UserBackendController implements the CRUD actions for UserBackend model.
@@ -123,5 +124,30 @@ class UserBackendController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     *  create new user
+     */
+    public function actionSignup ()
+    {
+        // 实例化一个表单模型
+        $model = new SignupForm();
+
+        // 1）首先我们是不是需要一个可以添加新用户的表单页面？
+        // 2）表单填写好了呢，是不是需要接收表单数据，验证表单数据，过滤表单数据，最后再将表单数据入库？
+        // 下面这一段if是我们刚刚分析的第二个小问题的实现，下面让我具体的给你描述一下这几个方法的含义吧
+        // $model->load() 方法，实质是把post过来的数据赋值给model的属性
+        // $model->signup() 方法, 是我们要实现的具体的添加用户操作
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            // 添加完用户之后，我们跳回到index操作即列表页
+            return $this->redirect(['index']);
+        }
+
+        // 下面这一段是我们刚刚分析的第一个小问题的实现
+        // 渲染添加新用户的表单
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 }
