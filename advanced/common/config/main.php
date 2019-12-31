@@ -23,10 +23,10 @@ return [
             // url后缀
             'suffix' => '',
             'rules' => [
-//                '/blogs' => '/blog/index',
-//                '<controller:\w+>/<id:\d+>' => '<controller>/view',// 所有的controller/id映射到controller/view界面 /blog/2 => /blog/view?id=2
-//                '/blogs/<id:\d+>' => '/blog/view',// /blog/view?id=1
-//                "<controller:\w+>/<action:\w+>"=>"<controller>/<action>",// controller和action匹配所有满足的路由
+                /*'/blogs' => '/blog/index',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',// 所有的controller/id映射到controller/view界面 /blog/2 => /blog/view?id=2
+                '/blogs/<id:\d+>' => '/blog/view',// /blog/view?id=1
+                "<controller:\w+>/<action:\w+>"=>"<controller>/<action>",// controller和action匹配所有满足的路由*/
             ],
         ],
     ],
