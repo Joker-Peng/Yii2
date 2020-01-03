@@ -16,11 +16,8 @@ class BlogSearch extends BlogForm
     public function rules()
     {
         return [
-            [['content'], 'string'],
-            [['create_time'], 'safe'],
-            [['title'], 'string', 'max' => 100],
-//            ['title', 'required', 'message' => '请填写标题'],
-//            ['content', 'required', 'message' => '请输入内容'],
+            [['id', 'views', 'is_delete'], 'integer'],
+            [['title', 'content', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -61,7 +58,10 @@ class BlogSearch extends BlogForm
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'create_time' => $this->create_time,
+            'views' => $this->views,
+            'is_delete' => $this->is_delete,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

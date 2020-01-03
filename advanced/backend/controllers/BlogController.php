@@ -66,15 +66,8 @@ class BlogController extends Controller
     {
         $model = new BlogForm();
 
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        }
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // 单纯的调用save方法，该方法也会调用validate方法对表单数据进行校验和过滤，
-            // 因为上面已经调用了validate方法，指定save(false)可避免重复调用validate
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [

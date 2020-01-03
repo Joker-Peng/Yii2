@@ -8,9 +8,12 @@ use Yii;
  * This is the model class for table "blog".
  *
  * @property int $id
- * @property string $title
- * @property string|null $content
- * @property string|null $create_time
+ * @property string $title 标题
+ * @property string $content 内容
+ * @property int $views 点击量
+ * @property int $is_delete 是否删除 0未删除 1已删除
+ * @property string $created_at 添加时间
+ * @property string $updated_at 更新时间
  */
 class Blog extends \yii\db\ActiveRecord
 {
@@ -28,8 +31,10 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['content', 'created_at', 'updated_at'], 'required'],
             [['content'], 'string'],
-            [['create_time'], 'safe'],
+            [['views', 'is_delete'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 100],
         ];
     }
@@ -43,7 +48,10 @@ class Blog extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'content' => 'Content',
-            'create_time' => 'Create Time',
+            'views' => 'Views',
+            'is_delete' => 'Is Delete',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }

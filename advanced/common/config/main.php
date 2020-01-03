@@ -29,6 +29,11 @@ return [
                 "<controller:\w+>/<action:\w+>"=>"<controller>/<action>",// controller和action匹配所有满足的路由*/
             ],
         ],
+        //authManager有PhpManager和DbManager两种方式,
+        //PhpManager将权限关系保存在文件里,这里使用的是DbManager方式,将权限关系保存在数据库.
+        "authManager" => [
+            "class" => 'yii\rbac\DbManager',
+        ],
     ],
     // 配置语言
     'language'=>'zh-CN',
