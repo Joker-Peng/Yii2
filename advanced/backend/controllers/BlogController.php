@@ -32,9 +32,16 @@ class BlogController extends Controller
     /**
      * Lists all Blog models.
      * @return mixed
+     * @throws \yii\web\ForbiddenHttpException
      */
     public function actionIndex()
     {
+        // 或者你也可以这样直接调用
+//        $isGuest = $this->isGuest();
+//        var_dump($isGuest);die;
+//        $myBehavior = $this->getBehavior('myBehavior');
+//        $isGuest = $myBehavior->isGuest();
+//        var_dump($isGuest);die;
         $searchModel = new BlogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

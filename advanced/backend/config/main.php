@@ -11,7 +11,15 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+        ],
+        //......
+    ],
+    'aliases' => [
+        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -38,6 +46,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        //authManager有PhpManager和DbManager两种方式,
+        //PhpManager将权限关系保存在文件里,这里使用的是DbManager方式,将权限关系保存在数据库.
+        "authManager" => [
+            "class" => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
+        ],
         // 后台 ui 框架
         'assetManager' => [
             'bundles' => [
@@ -61,5 +75,14 @@ return [
             ],
         ],
     ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            //这里是允许访问的action，不受权限控制
+            //controller/action
+           'site/*'// 基础登录控制器
+        ]
+    ],
+//    'as myBehavior2' => backend\controllers\AccessControl::className(),
     'params' => $params,
 ];
