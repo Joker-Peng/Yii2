@@ -83,6 +83,5 @@ return [
            'site/*'// 基础登录控制器
         ]
     ],
-//    'as myBehavior2' => backend\controllers\AccessControl::className(),
     'params' => $params,
 ];
