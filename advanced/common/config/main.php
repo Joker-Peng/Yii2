@@ -17,7 +17,7 @@ return [
             // 是否开启美化效果
             'enablePrettyUrl' => true,
             // 是否或略脚本名index.php
-            'showScriptName' => false,
+            'showScriptName' => true,
             // 是否开启严格解析路由
             'enableStrictParsing' => false,
             // url后缀
