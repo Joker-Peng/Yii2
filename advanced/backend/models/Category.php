@@ -37,8 +37,8 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
+            'id' => '栏目ID',
+            'name' => '栏目名',
         ];
     }
 }

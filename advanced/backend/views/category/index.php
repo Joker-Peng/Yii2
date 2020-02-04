@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '操作',
                 'buttons' => [
                     'update' => function ($url, $model, $key) {
-                        return Html::a("栏目信息", $url, [
-                            'title' => '栏目信息',
+                        return Html::a("编辑", $url, [
+                            'title' => '编辑栏目',
                             // btn-update 目标class
                             'class' => 'btn btn-default btn-update',
                             // 固定写法
@@ -68,34 +68,28 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <?php
 use yii\bootstrap\Modal;
+use yii\helpers\Url;
+
 Modal::begin([
     'id' => 'operate-modal',
     'header' => '<h4 class="modal-title"></h4>',
 ]);
 Modal::end();
-?>
-<?php
-use yii\helpers\Url;
 // 异步请求的地址
 $requestCreateUrl = Url::toRoute('create');
-$js = <<<JS
-// 创建操作
-$('#create').on('click', function () {
-    $('.modal-title').html('创建栏目');
-    $.get('{$requestCreateUrl}',
-        function (data) {    
-            // 弹窗的主题渲染页面
-            $('.modal-body').html(data);
-        }  
-    );
-});
-JS;
-$this->registerJs($js);
-?>
-<?php
 // 更新
 $requestUpdateUrl = Url::toRoute('update');
 $js = <<<JS
+    // 创建操作
+    $('#create').on('click', function () {
+        $('.modal-title').html('创建栏目');
+        $.get('{$requestCreateUrl}',
+            function (data) {    
+                // 弹窗的主题渲染页面
+                $('.modal-body').html(data);
+            }  
+        );
+    });
     // 更新操作
     $('.btn-update').on('click', function () {
         $('.modal-title').html('栏目信息');
