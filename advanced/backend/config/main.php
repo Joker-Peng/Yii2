@@ -38,8 +38,10 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'class' => 'yii\log\FileTarget',// 日志的类型
+//                    'class' => 'yii\log\DbTarget',// 数据库存储日志
+// 运行命令 php yii migrate --migrationPath=@yii/log/migrations/ 创建日志表
+                    'levels' => ['error', 'warning','info'],
                 ],
             ],
         ],

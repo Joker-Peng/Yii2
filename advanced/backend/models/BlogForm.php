@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use common\models\Blog;
-use yii\helpers\ArrayHelper;
+use Yii;
 
 /**
  * This is the model class for table "blog".
@@ -20,6 +20,23 @@ use yii\helpers\ArrayHelper;
 class BlogForm extends Blog
 {
     public $category;
+
+    // 测试 model 的 insert 事件,更新时只会调用 before ,插入时两者都会调用
+    public function init ()
+    {
+        parent::init();
+        $this->on(self::EVENT_BEFORE_INSERT, [$this, 'onBeforeInsert']);
+        $this->on(self::EVENT_AFTER_INSERT, [$this, 'onAfterInsert']);
+    }
+
+    public function onBeforeInsert ($event)
+    {
+        yii::info('This is beforeInsert event.');
+    }
+    public function onAfterInsert ($event)
+    {
+        yii::info('This is alterInsert event.');
+    }
 
     /**
      * {@inheritdoc}
