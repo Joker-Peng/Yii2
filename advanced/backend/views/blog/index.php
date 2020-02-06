@@ -11,6 +11,7 @@ use yii\helpers\Url;
 
 $this->title = '博客';
 $this->params['breadcrumbs'][] = $this->title;
+backend\assets\TestAsset::register($this);// 资源包管理
 ?>
 <div class="blog-index">
 
