@@ -31,7 +31,7 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'created_at', 'updated_at'], 'required'],
+            [['content'], 'required'],
             [['content'], 'string'],
             [['views', 'is_delete'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],

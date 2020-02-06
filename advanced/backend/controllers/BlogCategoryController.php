@@ -3,17 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\CategoryForm;
-use backend\models\CategorySearch;
+use backend\models\BlogCategoryForm;
+use backend\models\BlogCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
 
 /**
- * CategoryController implements the CRUD actions for Category model.
+ * BlogCategoryController implements the CRUD actions for BlogCategory model.
  */
-class CategoryController extends Controller
+class BlogCategoryController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +31,12 @@ class CategoryController extends Controller
     }
 
     /**
-     * Lists all Category models.
+     * Lists all BlogCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
+        $searchModel = new BlogCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Displays a single Category model.
+     * Displays a single BlogCategory model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +59,13 @@ class CategoryController extends Controller
     }
 
     /**
-    * Creates a new Category model.
+    * Creates a new BlogCategory model.
     * If creation is successful, the browser will be redirected to the 'view' page.
     * @return mixed
     */
     public function actionCreate()
     {
-        $model = new CategoryForm();
+        $model = new BlogCategoryForm();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -80,14 +80,14 @@ class CategoryController extends Controller
     */
     public function actionValidateForm()
     {
-        $model = new CategoryForm();
+        $model = new BlogCategoryForm();
         $model->load(Yii::$app->request->post());
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return \yii\widgets\ActiveForm::validate($model);
     }
 
     /**
-    * Updates an existing Category model.
+    * Updates an existing BlogCategoryForm model.
     * If update is successful, the browser will be redirected to the 'view' page.
     * @param integer $id
     * @return mixed
@@ -105,7 +105,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Deletes an existing Category model.
+     * Deletes an existing BlogCategoryForm model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +119,15 @@ class CategoryController extends Controller
     }
 
     /**
-     * Finds the Category model based on its primary key value.
+     * Finds the BlogCategoryForm model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Category the loaded model
+     * @return BlogCategoryForm the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CategoryForm::findOne($id)) !== null) {
+        if (($model = BlogCategoryForm::findOne($id)) !== null) {
             return $model;
         }
 

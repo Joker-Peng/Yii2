@@ -6,9 +6,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * CategorySearch represents the model behind the search form of `common\models\Category`.
+ * BlogCategorySearch represents the model behind the search form of `common\models\BlogCategoryForm`.
  */
-class CategorySearch extends CategoryForm
+class BlogCategorySearch extends BlogCategoryForm
 {
     /**
      * {@inheritdoc}
@@ -16,8 +16,7 @@ class CategorySearch extends CategoryForm
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'blog_id', 'category_id'], 'integer'],
         ];
     }
 
@@ -39,7 +38,7 @@ class CategorySearch extends CategoryForm
      */
     public function search($params)
     {
-        $query = CategoryForm::find();
+        $query = BlogCategoryForm::find();
 
         // add conditions that should always apply here
 
@@ -58,9 +57,9 @@ class CategorySearch extends CategoryForm
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'blog_id' => $this->blog_id,
+            'category_id' => $this->category_id,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

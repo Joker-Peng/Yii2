@@ -6,17 +6,18 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\CategorySearch */
+/* @var $searchModel common\models\BlogCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Categories';
+$this->title = '博客 栏目';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="category-index">
+<div class="blog-category-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('新建栏目', ['create'], [
+        <?= Html::a('新建博客栏目', ['create'], [
             'class' => 'btn btn-success',
             'id' => 'create',
             'data-toggle' => 'modal',
@@ -33,7 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            'blog_id',
+            'category_id',
 
             [
                 'class' => 'yii\grid\ActionColumn',
