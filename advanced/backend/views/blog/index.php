@@ -43,3 +43,14 @@ backend\assets\TestAsset::register($this);// 资源包管理
 
 
 </div>
+
+<!--Url工具类的使用-->
+<!--<a href="<?/*= Url::to(['site/index']) */?>">Yii Forum1</a>
+<br>
+<a href="<?/*= Url::toRoute('site/index') */?>">Yii Forum2</a>
+<br>
+<a href="<?/*= Url::toRoute(['site/index']) */?>">Yii Forum3</a>
+<br>
+<a href="<?/*= Url::to(['/blog']) */?>">Yii Forum4</a>
+<br>
+<a href="<?/*= Url::to(['blog/view', 'id' => 2]) */?>">Yii Forum5</a>-->
