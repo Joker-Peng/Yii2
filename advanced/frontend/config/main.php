@@ -11,6 +11,18 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'authClientCollection' => [
+        'class' => 'yii\authclient\Collection',
+        'clients' => [
+            // qq这个键名我们后面访问链接的使用有用到
+            'qq' => [
+                'class' => 'frontend\components\AuthClientQq',
+                'clientId' => '你的appid',// todo
+                'clientSecret' => '你的apikey',// todo
+            ],
+            // etc.
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

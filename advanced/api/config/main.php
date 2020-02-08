@@ -7,32 +7,25 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'app-api',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'frontend\controllers',
+    'controllerNamespace' => 'api\modules\v1\controllers',
     'modules' => [
         'v1' => [
             'class' => 'api\modules\v1\Module',
         ],
     ],
     'components' => [
-        'request' => [
-            'csrfParam' => '_csrf-frontend',
-        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'enableSession' => false,
             'loginUrl' => null,
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
-        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => true,
+            'showScriptName' => false,
             'enableStrictParsing' =>true,
             'rules' => require(__DIR__ . '/url-rules.php'),
         ],
@@ -46,7 +39,6 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
         ],
     ],
     'params' => $params,

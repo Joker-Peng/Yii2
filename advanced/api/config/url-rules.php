@@ -6,7 +6,7 @@
  */
 $urlRuleConfigs = [
     [
-        'controller' => ['v1/user','v1/goods'],
+        'controller' => ['v1/users'],
         'extraPatterns' => [
             'POST login' => 'login',
             'GET signup-test' => 'signup-test',
