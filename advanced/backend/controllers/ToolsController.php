@@ -9,6 +9,8 @@ namespace backend\controllers;
 use backend\models\Upload;
 use yii\web\UploadedFile;
 use Yii;
+use Upyun\Upyun;
+use Upyun\Config;
 
 class ToolsController extends \yii\web\Controller
 {
@@ -72,4 +74,27 @@ class ToolsController extends \yii\web\Controller
         }
         return $this->render("asyn");
     }
+
+    /**
+     * Desc: 上传文件到又拍云
+     * Created by Joker
+     * Date: 2020/2/8
+     * Time: 20:27
+     * @return string
+     * @throws \Exception
+     */
+    public function actionUpyun(){
+        if (Yii::$app->request->isPost) {
+            $imageFile = UploadedFile::getInstanceByName('file');
+
+            $imageName = date("Ymd") . time() . uniqid() . '.' . $imageFile->extension;
+            $file = fopen($imageFile->tempName, 'r');
+            $serviceConfig = new Config('image-joker', Yii::$app->params['upyun']['name'], Yii::$app->params['upyun']['pwd']);
+            $client = new Upyun($serviceConfig);
+            $client->write($imageName, $file);
+        }
+        return $this->render("upyun");
+    }
+
+
 }

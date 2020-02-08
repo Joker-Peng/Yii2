@@ -11,4 +11,9 @@ class Helper
     {
         return $mobile;
     }
+
+    public static function pr($data = ""){
+        echo "<pre>";
+        var_dump($data);
+    }
 }
