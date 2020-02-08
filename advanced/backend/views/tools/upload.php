@@ -11,6 +11,6 @@ $form = ActiveForm::begin(["options" => ["enctype" => "multipart/form-data"]]);
 ?>
 <?= $form->field($model, "file")->fileInput() ?>
 
-    <button>Submit</button>
+    <button>上传</button>
 
 <?php ActiveForm::end(); ?>

@@ -39,4 +39,37 @@ class ToolsController extends \yii\web\Controller
             "uploadSuccessPath" => $uploadSuccessPath,
         ]);
     }
+
+    /**
+     * Desc: 图片异步上传
+     * Created by Joker
+     * Date: 2020/2/8
+     * Time: 20:08
+     * @return string
+     */
+    public function actionAsyn(){
+        if (Yii::$app->request->isPost) {
+            //文件上传存放的目录
+            $imageFile = UploadedFile::getInstanceByName('file');
+            $dir = "uploads/".date("Ymd");
+            if (!is_dir($dir))
+                mkdir($dir);
+
+            if($imageFile->error){
+                exit(json_encode(['retCode'=>1001,'retMsg'=>'圖片文件過大!','retMsgEn'=>"Object file too large!"]));
+            }
+            if(!in_array($imageFile->getExtension(),['jpg','jpng','png','jpeg','ico'])){
+                exit(json_encode(['retCode'=>1002,'retMsg'=>'文件格式不支持!']));
+            }
+
+            $imageName = $dir .'/' . time() . uniqid() . '.' . $imageFile->extension;
+            if($imageFile->saveAs($imageName)){
+                exit(json_encode(['retCode'=>1000,'retMsg'=>'保存成功!','data'=>$imageName]));
+            }else{
+                exit(json_encode(['retCode'=>1004,'retMsg'=>'保存失敗!']));
+            }
+
+        }
+        return $this->render("asyn");
+    }
 }

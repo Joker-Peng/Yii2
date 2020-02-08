@@ -10,12 +10,15 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','debug'],
     'modules' => [
         'admin' => [
             'class' => 'mdm\admin\Module',
         ],
-        //......
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'allowedIPs' => ['127.0.0.1', '::1']
+        ]
     ],
     'aliases' => [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
