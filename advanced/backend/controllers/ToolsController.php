@@ -6,6 +6,7 @@
  */
 
 namespace backend\controllers;
+use backend\models\BlogForm;
 use backend\models\Upload;
 use yii\web\UploadedFile;
 use Yii;
@@ -96,6 +97,11 @@ class ToolsController extends \yii\web\Controller
         return $this->render("upyun");
     }
 
-
+    public function actionUEdit(){
+        $model = new BlogForm();
+        if (Yii::$app->request->isPost) {
+        }
+        return $this->render("uedit",['model'=>$model]);
+    }
 
 }
