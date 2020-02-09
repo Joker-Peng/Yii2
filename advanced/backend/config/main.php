@@ -18,7 +18,14 @@ return [
         'debug' => [
             'class' => 'yii\debug\Module',
             'allowedIPs' => ['127.0.0.1', '::1']
-        ]
+        ],
+        'redactor' => [
+//            'class' => 'yii\redactor\RedactorModule',
+            'class' => 'backend\components\RedactorModule',// 修改图片上传目录
+//            'uploadDir' => '上传目录',  // 比如这里可以填写 ./uploads
+//            'uploadUrl' => '图片可访问地址',
+            'imageAllowExtensions'=>['jpg','png','gif']
+        ],
     ],
     'aliases' => [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',

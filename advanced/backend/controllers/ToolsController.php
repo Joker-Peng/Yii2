@@ -97,11 +97,25 @@ class ToolsController extends \yii\web\Controller
         return $this->render("upyun");
     }
 
+    /**
+     * Desc: 百度富文本编辑器
+     * Created by Joker
+     * Date: 2020/2/9
+     * Time: 23:42
+     * @return string
+     */
     public function actionUEdit(){
         $model = new BlogForm();
         if (Yii::$app->request->isPost) {
         }
         return $this->render("uedit",['model'=>$model]);
+    }
+
+    public function actionRedactor(){
+        $model = new BlogForm();
+        if (Yii::$app->request->isPost) {
+        }
+        return $this->render("redactor",['model'=>$model]);
     }
 
 }
