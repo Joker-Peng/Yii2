@@ -57,19 +57,22 @@ class ToolsController extends \yii\web\Controller
             $dir = "uploads/".date("Ymd");
             if (!is_dir($dir))
                 mkdir($dir);
-
+// 错误时
+//            {"code": 1, "msg": "error"}
+// 正确时， 其中 attachment 指的是保存在数据库中的路径，url 是该图片在web可访问的地址
+//            {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
             if($imageFile->error){
-                exit(json_encode(['retCode'=>1001,'retMsg'=>'圖片文件過大!','retMsgEn'=>"Object file too large!"]));
+                exit(json_encode(['retCode'=>1001,'retMsg'=>'圖片文件過大!','retMsgEn'=>"Object file too large!",'code'=>1,'msg'=>'error']));
             }
             if(!in_array($imageFile->getExtension(),['jpg','jpng','png','jpeg','ico'])){
-                exit(json_encode(['retCode'=>1002,'retMsg'=>'文件格式不支持!']));
+                exit(json_encode(['retCode'=>1002,'retMsg'=>'文件格式不支持!','code'=>1,'msg'=>'error']));
             }
 
             $imageName = $dir .'/' . time() . uniqid() . '.' . $imageFile->extension;
             if($imageFile->saveAs($imageName)){
-                exit(json_encode(['retCode'=>1000,'retMsg'=>'保存成功!','data'=>$imageName]));
+                exit(json_encode(['retCode'=>1000,'retMsg'=>'保存成功!','data'=>$imageName,'code'=>0,'url'=>Yii::$app->params['domain'].'/'.$imageName,'attachment'=>$imageName]));
             }else{
-                exit(json_encode(['retCode'=>1004,'retMsg'=>'保存失敗!']));
+                exit(json_encode(['retCode'=>1004,'retMsg'=>'保存失敗!','error'=>1,'msg'=>"error"]));
             }
 
         }
@@ -111,11 +114,32 @@ class ToolsController extends \yii\web\Controller
         return $this->render("uedit",['model'=>$model]);
     }
 
+    /**
+     * Desc: Redactor
+     * Created by Joker
+     * Date: 2020/2/10
+     * Time: 00:27
+     * @return string
+     */
     public function actionRedactor(){
         $model = new BlogForm();
         if (Yii::$app->request->isPost) {
         }
         return $this->render("redactor",['model'=>$model]);
+    }
+
+    /**
+     * Desc: webuploader
+     * Created by Joker
+     * Date: 2020/2/10
+     * Time: 00:27
+     * @return string
+     */
+    public function actionWebuploader(){
+        $model = new BlogForm();
+        if (Yii::$app->request->isPost) {
+        }
+        return $this->render("webuploader",['model'=>$model]);
     }
 
 }
