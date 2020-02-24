@@ -30,6 +30,7 @@ class BlogCategoryController extends Controller
         ];
     }
 
+    
     /**
      * Lists all BlogCategory models.
      * @return mixed
